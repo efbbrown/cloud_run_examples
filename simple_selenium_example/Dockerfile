@@ -10,11 +10,10 @@ RUN apt-get install -y gconf-service libasound2 libatk1.0-0 libcairo2 libcups2 l
 # RUN wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
 # RUN dpkg -i google-chrome-stable_current_amd64.deb; apt-get -fy install
 
-# Install specific version of Chrome
-# ENV CHROME_VERSION 77.0.3865.120-1
-RUN wget --no-check-certificate https://dl.google.com/linux/chrome/deb/pool/main/g/google-chrome-stable/google-chrome-stable_77.0.3865.120-1_amd64.deb
-RUN dpkg -i google-chrome-stable_77.0.3865.120-1_amd64.deb || apt -y -f install
-RUN rm google-chrome-stable_77.0.3865.120-1_amd64.deb;
+# Install specific version (90.0.4430.72) of Chrome from slimjet.com
+RUN wget https://www.slimjet.com/chrome/download-chrome.php?file=files%2F90.0.4430.72%2Fgoogle-chrome-stable_current_amd64.deb
+RUN dpkg -i download-chrome.php?file=files%2F90.0.4430.72%2Fgoogle-chrome-stable_current_amd64.deb; apt -y -f install
+RUN rm download-chrome.php?file=files%2F90.0.4430.72%2Fgoogle-chrome-stable_current_amd64.deb;
 
 # Install Python dependencies.
 COPY requirements.txt requirements.txt

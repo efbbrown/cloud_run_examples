@@ -3,4 +3,4 @@
 Flask==1.0.2
 gunicorn==19.9.0
 selenium==3.141.0
-chromedriver-binary==77.0.3865.120
+chromedriver-binary==90.0.4430.24.0

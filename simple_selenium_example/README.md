@@ -5,6 +5,10 @@
 In this folder I'm following this example:
 <https://dev.to/googlecloud/using-headless-chrome-with-cloud-run-3fdp>
 
+That example was a bit out of date and wouldn't run succesfully so I used some
+techniques inspired by this article as well:
+<https://qxf2.com/blog/building-your-own-docker-images-for-different-browser-versions/>
+
 ## Shell code to deploy
 
 The commands in the tutorial must be out of date as they don't run smoothly.
@@ -27,22 +31,18 @@ gcloud builds submit --tag gcr.io/$PROJECT_ID/$IMAGE_NAME
 gcloud beta run deploy $SERVICE_NAME --image gcr.io/$PROJECT_ID/$IMAGE_NAME --region $REGION --platform managed
 ```
 
-## Current Error
+## Redeployment
 
-This example is not running successfully yet. The current error is:
+If you make changes to your image that you want to deploy rerun
+the `gcloud builds submit ...` and `gcloud beta run deploy ...` commands.
 
+```shell
+# To build the image
+gcloud builds submit --tag gcr.io/$PROJECT_ID/$IMAGE_NAME
+
+# To deploy the image
+gcloud beta run deploy $SERVICE_NAME --image gcr.io/$PROJECT_ID/$IMAGE_NAME --region $REGION --platform managed
 ```
-selenium.common.exceptions.SessionNotCreatedException: Message: session not created: This version of ChromeDriver only supports Chrome version 77
-```
-
-I don't think it matters much which version of chrome is used, but the versions
-in `requirements.txt` and `Dockerfile` will have to match.
-
-In order to resolve this, read the following looking for answers:
-
-1. <https://unix.stackexchange.com/questions/233185/install-older-versions-of-google-chrome-stable-on-ubuntu-14-10/590412>
-2. <https://askubuntu.com/questions/243394/how-to-install-specific-versions-of-google-chrome-chromium>
-3. <https://qxf2.com/blog/building-your-own-docker-images-for-different-browser-versions/>
 
 ## Clean up
 
