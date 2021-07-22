@@ -1,0 +1,10 @@
+# Common ignores
+README.md
+*.pyc
+*.pyo
+*.pyd
+__pycache__
+.pytest_cache
+
+# Specific to this example
+config_example.yaml

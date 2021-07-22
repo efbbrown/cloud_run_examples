@@ -3,3 +3,4 @@
 *.pyd
 __pycache__
 .pytest_cache
+eugenium_scraper_with_db_example/config.yaml

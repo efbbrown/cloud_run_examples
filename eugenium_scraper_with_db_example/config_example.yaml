@@ -1,0 +1,5 @@
+# Replace the value of DATABASE_URI with your own DATABASE__URI and rename
+# this file to config.yaml
+
+DATABASE_URI: "driver://username:password@database_url:port"
+SCHEMA_NAME: "tennis_booking"
